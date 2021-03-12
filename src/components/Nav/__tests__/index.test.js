@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, cleanup, getByLabelText } from '@testing-library/react';
+import { render, cleanup, getByLabelText, getByTestId } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import Nav from '..';
 
@@ -31,6 +31,9 @@ describe('emoji is visible', () => {
 describe('links are visible', () => {
     it('inserts text into the links', () => {
         // Arrange
+        const { getByTestId } = render(<Nav />);
         // Assert
+        expect(getByTestId('link')).toHaveTextContent('Oh Snap!');
+        expect(getByTestId('about')).toHaveTextContent('About me');
     });
 })
